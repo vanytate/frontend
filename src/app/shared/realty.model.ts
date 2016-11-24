@@ -1,0 +1,32 @@
+export interface IRealty {
+  id: number;
+  city: string;
+  street: string;
+  address_district: string;
+  address_house: string;
+  address_flat: number;
+  address_guide: any;
+  floor_current: number;
+  house_type: string;
+  rooms_quantity: number;
+  rooms_type: string;
+  area_all: number;
+  area_rooms: number;
+  area_kitchen: any;
+  ceiling_height: any;
+  layout: string;
+  repair: string;
+  convenience: string;
+  heating: string;
+  flooring: string;
+  walls: string;
+  ceiling: string;
+  windows: string;
+  plumbing: string;
+  bathroom: string;
+  hot_water: string;
+  price: any;
+  min_price: any;
+  sale: string;
+  furniture: string;
+}

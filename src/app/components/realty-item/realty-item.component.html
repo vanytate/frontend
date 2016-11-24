@@ -1,0 +1,20 @@
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-body">
+     <span class="pull-left">
+       <img id="image" src="./images/house.jpg" alt="" class="img-responsive img-thumbnail">
+     </span>
+      <div class="pull-right">
+        <div>р-н. {{ realty.address_district }} м. {{ realty.city }}</div>
+        <hr>
+        <div>Кімнат <b>{{ realty.rooms_quantity }}</b> &nbsp; &nbsp; Площа <b>{{ realty.area_all }}</b> &nbsp; &nbsp; Поверх <b>{{ realty.floor_current }}</b></div>
+      </div>
+    </div>
+    <div class="panel-footer clearfix">
+      <span class="pull-left">Ціна <b>{{ realty.price }}</b> $</span>
+      <span class="pull-right">
+        <a href="">детальніше...</a>
+    </span>
+    </div>
+  </div>
+</div>
