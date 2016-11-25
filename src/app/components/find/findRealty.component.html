@@ -1,8 +1,311 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div style="position: fixed">
-        adsf
+      <div style="">
+        <div class="col-sm-12 col-xs-12 filter-pnl">
+          <button type="button" class="btn btn-warning" id="filters-reset-btn" ng-click="filtersReset()">Скинути фільтри</button>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.city" ng-change="filtering()" placeholder="Місто">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.street" ng-change="filtering()" placeholder="Вулиця">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.address_house" ng-change="filtering()" placeholder="Будинок">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.address_flat" ng-change="filtering()" placeholder="Квартира">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.address_district" ng-change="filtering()" placeholder="Район">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.price" ng-change="filtering()" placeholder="Вартість">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.min_price" ng-change="filtering()" placeholder="Мін. вартість">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Тип продажу
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.sale" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>прямий</option>
+                <option>не прямий</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.area_all" ng-change="filtering()" placeholder="Площа">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.area_rooms" ng-change="filtering()" placeholder="Площа кімнат">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.area_kitchen" ng-change="filtering()" placeholder="Площа кухні">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.rooms_quantity" ng-change="filtering()" placeholder="К-ть кімнат">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-body">
+              <input type="text" class="form-control" ng-model="filter.floor_current" ng-change="filtering()" placeholder="Поверх">
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Тип будинку
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.house_type" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>цегляний</option>
+                <option>дерев`янний</option>
+                <option>панельний</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Тип кімнат
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.rooms_type" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>суміжні</option>
+                <option>роздільні</option>
+                <option>суміжно-роздільні</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Тип будови
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.layout" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>чешка</option>
+                <option>київка</option>
+                <option>старий фонд</option>
+                <option>хрущовка</option>
+                <option>сталінка</option>
+                <option>новобудова</option>
+                <option>в особняку</option>
+                <option>спецпроект</option>
+                <option>м/с</option>
+                <option>гуртожиток</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Ремонт
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.repair" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>не штукатурено</option>
+                <option>від забудовника</option>
+                <option>б/р не жилий стан</option>
+                <option>хороший стан</option>
+                <option>косметичний ремонт</option>
+                <option>ремонт</option>
+                <option>євроремонт</option>
+                <option>дизайнерсткий ремонт</option>
+                <option>частковий</option>
+                <option>савдеп</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Зручності
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.convenience" ng-change="filtering()">
+                <option value="">будь-які</option>
+                <option>не вказано</option>
+                <option>всі</option>
+                <option>туалет</option>
+                <option>ванна</option>
+                <option>газ</option>
+                <option>світло</option>
+                <option>вода</option>
+                <option>каналізація</option>
+                <option>душ</option>
+                <option>джакузі</option>
+                <option>душова кабіна</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Опалення
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.heating" ng-change="filtering()">
+                <option value="">будь-яке</option>
+                <option>не вказано</option>
+                <option>без опалення</option>
+                <option>пічне (наз/дрова)</option>
+                <option>централізоване</option>
+                <option>котел</option>
+                <option>конвектор</option>
+                <option>АГВ</option>
+                <option>котельня на будинок</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Підлога
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.flooring" ng-change="filtering()">
+                <option value="">будь-яка</option>
+                <option>не вказано</option>
+                <option>ломінат</option>
+                <option>дерево</option>
+                <option>стяжка</option>
+                <option>паркет</option>
+                <option>плитка</option>
+                <option>лінолеум</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Стіни
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.walls" ng-change="filtering()">
+                <option value="">будь-які</option>
+                <option>не вказано</option>
+                <option>обої</option>
+                <option>штукатурка</option>
+                <option>не штукатурено</option>
+                <option>побілка</option>
+                <option>вагонка</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Стеля
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.ceiling" ng-change="filtering()">
+                <option value="">будь-яка</option>
+                <option>не вказано</option>
+                <option>побілка</option>
+                <option>не штукатурено</option>
+                <option>гіпсокартон</option>
+                <option>натяжні стелі</option>
+                <option>вагонка</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Вікна
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.windows" ng-change="filtering()">
+                <option value="">будь-які</option>
+                <option>не вказано</option>
+                <option>металопластикові</option>
+                <option>дерев`янні</option>
+                <option>без вікон</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Сантехніка
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.plumbing" ng-change="filtering()">
+                <option value="">будь-яка</option>
+                <option>не вказано</option>
+                <option>нова</option>
+                <option>стара</option>
+                <option>без сантехніки</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Санвузол
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.bathroom" ng-change="filtering()">
+                <option value="">будь-який</option>
+                <option>не вказано</option>
+                <option>роздільний</option>
+                <option>окремий</option>
+                <option>суміщений</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Гаряча вода
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.hot_water" ng-change="filtering()">
+                <option value="">будь-яка</option>
+                <option>не вказано</option>
+                <option>бойлер</option>
+                <option>котел</option>
+                <option>газова колонка</option>
+                <option>без гарячої води</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter">
+            <div class="filter-title">
+              <span class="glyphicon glyphicon-triangle-right"></span>Меблі
+            </div>
+            <div class="filter-body">
+              <select class="form-control" ng-model="filter.furniture" ng-change="filtering()">
+                <option value="">будь-які</option>
+                <option>без меблів</option>
+                <option>старі меблі</option>
+                <option>нові меблі</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-8">
