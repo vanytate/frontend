@@ -1,26 +1,97 @@
 import {Component, OnInit} from '@angular/core';
 
-import { IRealty } from '../../shared/realty.model';
-import { Realty } from '../../shared/realty.modelImpl';
-import { RealtyService } from '../../shared/realty.service';
+import {ActivatedRoute} from '@angular/router';
+
+import {IRealty} from '../../shared/realty.model';
+import {Realty} from '../../shared/realty.modelImpl';
+import {RealtyService} from '../../shared/realty.service';
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
-  templateUrl: './addRealty.component.html'
+  templateUrl: './addRealty.component.html',
+  styleUrls: ['./showEditAdd.component.css']
 })
 export class AddRealtyComponent implements OnInit {
 
+  complexForm : FormGroup;
+
     realty: IRealty;
 
-    constructor(private realtyService: RealtyService) {
-        this.realty = new Realty();
+    editable: boolean = true;
+
+    action: any;
+    actionText: string;
+
+    constructor(private realtyService: RealtyService, private route: ActivatedRoute, fb: FormBuilder) {
+      this.realty = new Realty();
+      console.log('this is constructor', this.realty);
+      this.complexForm = fb.group({
+          'city': [Validators.required],
+          'street': '',
+          'address_district': '',
+          'address_house': '',
+          'address_flat': '',
+          'address_guide': '',
+          'floor_current': '',
+          'house_type': '',
+          'rooms_quantity': '',
+          'rooms_type': '',
+          'area_all': '',
+          'area_rooms': '',
+          'area_kitchen': '',
+          'ceiling_height': '',
+          'layout': '',
+          'repair': '',
+          'convenience': '',
+          'heating': '',
+          'flooring': '',
+          'walls': '',
+          'ceiling': '',
+          'windows': '',
+          'plumbing': '',
+          'bathroom': '',
+          'hot_water': '',
+          'price': '',
+          'min_price': '',
+          'sale': '',
+          'furniture': ''
+        });
     }
 
     ngOnInit(): void {
-        this.realtyService.getById(5370).subscribe(res => this.realty = res);
+        this.route.url.subscribe(values => {
+          this.action = this.updateRealty;
+          if (values[0].path === 'edit') {
+            console.log('update');
+            this.actionText = 'Змінити';
+            this.route.params.subscribe(params => {
+              this.realtyService.getById(+params['idRealty']).subscribe(res => this.realty = res);
+            });
+          } else if (values[0].path === 'add'){
+            console.log('save');
+            this.action = this.saveRealty;
+            this.actionText = 'Додати кваритру';
+          } else {
+
+          }
+        });
     }
 
     saveRealty(event) {
-        console.log(this.realty);
+      this.realtyService.saveRealty(this.realty).subscribe(res => console.log(res));
+    }
+
+    updateRealty(event) {
+      console.log('update realty');
+      console.log(this.realty);
+    }
+
+    deleteRealty(event) {
+      this.realtyService.deleteRealty(this.realty.id).subscribe(res => console.log(res));
+    }
+
+    change() {
+      this.editable = !this.editable;
     }
 
 }

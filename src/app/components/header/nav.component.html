@@ -11,11 +11,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a routerLink="/home" routerLinkActive="active">Головна</a></li>                
-                <li><a routerLink="/find" routerLinkActive="active">Знайти</a></li>
-                <li><a routerLink="/add" routerLinkActive="active">Додати</a></li>
-                <li><a routerLink="/contacts" routerLinkActive="active">Контакти</a></li>
-                
+                <li><a [routerLink]="['/home']" routerLinkActive="active">Головна</a></li>
+                <li><a [routerLink]="['/find']" routerLinkActive="active">Знайти</a></li>
+                <li><a [routerLink]="['/add']" routerLinkActive="active">Додати</a></li>
+                <li><a [routerLink]="['/contacts']" routerLinkActive="active">Контакти</a></li>
             </ul>
         </div>
     </div>

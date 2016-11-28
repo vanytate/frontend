@@ -11,9 +11,12 @@ export class FindRealtyComponent implements OnInit {
 
     realties: IRealty[];
 
+    filterModel;
+
     pageSize: number;
 
     constructor(private realtyService: RealtyService) {
+        this.filterModel = {};
         this.realties = [];
         this.pageSize = 10;
     }
@@ -23,11 +26,15 @@ export class FindRealtyComponent implements OnInit {
     }
 
     public showData(event) {
-      console.log(this.realties);
     }
 
     pageChanged(event) {
         window.scrollTo(0, 0);
+    }
+
+    filtersReset() {
+      this.realties.filter(e => e);
+      this.filterModel = {};
     }
 
 }

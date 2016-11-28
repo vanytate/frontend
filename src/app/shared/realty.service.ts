@@ -9,29 +9,49 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { IRealty } from '../shared/realty.model';
+import anything = jasmine.anything;
 
 @Injectable()
 export class RealtyService {
 
-    getDataUrl: string = 'http://lab.free-lib.com/api/realty';
-    sendDataUrl: string = 'http://lab.free-lib.com/api/realty';
-    updateDataUrl: string = 'http://lab.free-lib.com/api/realty/';
-    deleteDataUrl: string = 'http://lab.free-lib.com/api/realty/delete/';
+  private getRealtiesUrl: string = 'http://lab.free-lib.com/api/realty';
+  private getRealtyByIdUrl: string = 'http://lab.free-lib.com/api/realty/';
+  private saveRealtyUrl: string = 'http://lab.free-lib.com/api/realty';
+  private updateRealtyUrl: string = 'http://lab.free-lib.com/api/realty/';
+  private deleteRealtyByIdUrl: string = 'http://lab.free-lib.com/api/realty/delete/';
 
     constructor(private http: Http) {
 
     }
 
     getRealties(): Observable<IRealty[]> {
-        return this.http.get(this.getDataUrl)
+        return this.http.get(this.getRealtiesUrl)
             .map(res => res.json().realty)
             .catch(this.handleError);
     }
 
     getById(id): Observable<IRealty> {
-        return this.http.get(this.getDataUrl + '/' + id)
+        return this.http.get(this.getRealtyByIdUrl + id)
             .map(res => res.json())
             .catch(this.handleError);
+    }
+
+    deleteRealty(id): Observable<any> {
+        return this.http.post(this.deleteRealtyByIdUrl + id, id)
+          .map(res => res.json())
+          .catch(this.handleError);
+    }
+
+    updateRealty(realty: IRealty): Observable<any> {
+        return this.http.post(this.updateRealtyUrl + realty.id, realty)
+          .map(res => res.json())
+          .catch(this.handleError);
+    }
+
+    saveRealty(realty: IRealty): Observable<any> {
+      return this.http.post(this.saveRealtyUrl, realty)
+          .map(res => res.json())
+          .catch(this.handleError);
     }
 
     handleError(error: any) {

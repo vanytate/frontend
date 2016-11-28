@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -17,18 +17,20 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { RealtyItemComponent } from './components/realty-item/realty-item.component';
 
 import { RealtyService } from './shared/realty.service';
+import {SearchPipe} from "./shared/search-pipe";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'add', component: AddRealtyComponent },
+  { path: 'edit/:idRealty', component: AddRealtyComponent },
   { path: 'find', component: FindRealtyComponent },
   { path: 'contacts', component: ContactsComponent }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, Navigator, HomeComponent, AddRealtyComponent, FindRealtyComponent, ContactsComponent, RealtyItemComponent
+    AppComponent, Navigator, HomeComponent, AddRealtyComponent, FindRealtyComponent, ContactsComponent, RealtyItemComponent, SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ const appRoutes: Routes = [
     Ng2PaginationModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RealtyService],
+  providers: [RealtyService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,373 +1,391 @@
 <div class="container">
-  <div class="row" ng-controller="addCtrl">
+  <div class="row">
     <div class="box">
       <div class="col-sm-12">
         <hr>
         <h2 class="intro-text text-center">
-          <strong>Додати квартиру</strong>
+          <strong>{{ actionText }}</strong>
         </h2>
         <hr>
       </div>
-      <div class="col-sm-12 segment">
-        <h4>Адреса</h4>
-        <div class="col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-2 col-sm-2" for="city">Місто</label>
-            <div class="col-md-10 col-sm-10">
-              <input type="text" class="form-control" id="city" [(ngModel)]="realty.city">
+      <form>
+      <!--<form [formGroup]="complexForm" (ngSubmit)="saveRealty(complexForm.value)">-->
+        <div class="col-sm-12 segment">
+          <h4>Адреса</h4>
+          <div class="col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-2 col-sm-2" for="city">Місто</label>
+              <div class="col-md-10 col-sm-10">
+                <!--<input type="text" class="form-control" [ngClass]="{'has-error': !complexForm.controls['city'].valid}" id="city" [(ngModel)]="realty.city">-->
+                <input type="text" class="form-control" id="city" [(ngModel)]="realty.city">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-2 col-sm-2" for="address_district">Район</label>
+              <div class="col-md-10 col-sm-10">
+                <input type="text" class="form-control" id="address_district" [(ngModel)]="realty.address_district">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-2 col-sm-2" for="street">Вулиця</label>
+              <div class="col-md-10 col-sm-10">
+                <input type="text" class="form-control" id="street" oninput="checkStreet(false)"
+                       [(ngModel)]="realty.street">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-2" for="address_house">Будинок</label>
+              <div class="col-md-8 col-sm-10">
+                <input type="text" class="form-control" id="address_house" oninput="checkAddressHouse(false)"
+                       [(ngModel)]="realty.address_house">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-4 col-sm-2" for="address_flat">Квартира</label>
+              <div class="col-md-8 col-sm-10">
+                <input type="number" class="form-control" id="address_flat" oninput="checkAddressFlat(false)"
+                       [(ngModel)]="realty.address_flat">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-1 col-sm-2" for="address_guide">Орієнтир</label>
+              <div class="col-md-11 col-sm-10">
+                <input type="text" class="form-control" id="address_guide" [(ngModel)]="realty.address_guide">
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-2 col-sm-2" for="address_district">Район</label>
-            <div class="col-md-10 col-sm-10">
-              <input type="text" class="form-control" id="address_district" [(ngModel)]="realty.address_district">
+        <div class="col-sm-12 segment">
+          <hr>
+          <h4>Основна інформація</h4>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="area_all">Площа</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="area_all" placeholder="кв.м" oninput="checkAreaAll(false)"
+                       [(ngModel)]="realty.area_all">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="area_rooms">Площа кімнат</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="area_rooms" placeholder="кв.м"
+                       oninput="checkAreaRooms(false)" [(ngModel)]="realty.area_rooms">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="area_kitchen">Площа кухні</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="area_kitchen" placeholder="кв.м"
+                       oninput="checkAreaKitchen(false)" [(ngModel)]="realty.area_kitchen">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="ceiling_height">Висота</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="ceiling_height" placeholder="м"
+                       oninput="checkCeilingHeight(false)" [(ngModel)]="realty.ceiling_height">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="rooms_quantity">Кількість кімнат</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="rooms_quantity" placeholder="> 0"
+                       oninput="checkRoomsQuantity(false)" [(ngModel)]="realty.rooms_quantity">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-5 col-sm-3" for="floor_current">Поверх</label>
+              <div class="col-md-7 col-sm-9">
+                <input type="text" class="form-control" id="floor_current" oninput="checkFloorCurrent(false)"
+                       [(ngModel)]="realty.floor_current">
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-2 col-sm-2" for="street">Вулиця</label>
-            <div class="col-md-10 col-sm-10">
-              <input type="text" class="form-control" id="street" oninput="checkStreet(false)" [(ngModel)]="realty.street">
+        <div class="col-sm-12 segment">
+          <hr>
+          <h4>Вартість</h4>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-6 col-sm-4" for="price">Вартість</label>
+              <div class="col-md-6 col-sm-8">
+                <input type="text" class="form-control" id="price" placeholder="UAH" oninput="checkPrice(false)"
+                       [(ngModel)]="realty.price">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-6 col-sm-4" for="min_price">Мінімальна вартість</label>
+              <div class="col-md-6 col-sm-8">
+                <input type="text" class="form-control" id="min_price" placeholder="UAH" oninput="checkMinPrice(false)"
+                       [(ngModel)]="realty.min_price">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-md-6 col-sm-4" for="sale">Тип продажу</label>
+              <div class="col-md-6 col-sm-8">
+                <select class="form-control" id="sale" [(ngModel)]="realty.sale">
+                  <option>не вказано</option>
+                  <option>прямий</option>
+                  <option>не прямий</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-4 col-sm-2" for="address_house">Будинок</label>
-            <div class="col-md-8 col-sm-10">
-              <input type="text" class="form-control" id="address_house" oninput="checkAddressHouse(false)" [(ngModel)]="realty.address_house">
+        <div class="col-sm-12 segment">
+          <hr>
+          <h4>Додаткова інформація<span class="glyphicon glyphicon-menu-down" aria-hidden="true" id="menu-btn"></span></h4>
+          <div id="additional">
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="house_type">Тип будинку</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="house_type" [(ngModel)]="realty.house_type">
+                    <option>не вказано</option>
+                    <option>цегляний</option>
+                    <option>дерев`янний</option>
+                    <option>панельний</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="rooms_type">Тип кімнат</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="rooms_type" [(ngModel)]="realty.rooms_type">
+                    <option>не вказано</option>
+                    <option>суміжні</option>
+                    <option>роздільні</option>
+                    <option>суміжно-роздільні</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="layout">Тип будови</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="layout" [(ngModel)]="realty.layout">
+                    <option>не вказано</option>
+                    <option>чешка</option>
+                    <option>київка</option>
+                    <option>старий фонд</option>
+                    <option>хрущовка</option>
+                    <option>сталінка</option>
+                    <option>новобудова</option>
+                    <option>в особняку</option>
+                    <option>спецпроект</option>
+                    <option>м/с</option>
+                    <option>гуртожиток</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="repair">Ремонт</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="repair" [(ngModel)]="realty.repair">
+                    <option>не вказано</option>
+                    <option>не штукатурено</option>
+                    <option>від забудовника</option>
+                    <option>б/р не жилий стан</option>
+                    <option>хороший стан</option>
+                    <option>косметичний ремонт</option>
+                    <option>ремонт</option>
+                    <option>євроремонт</option>
+                    <option>дизайнерсткий ремонт</option>
+                    <option>частковий</option>
+                    <option>савдеп</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="convenience">Зручності</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="convenience" [(ngModel)]="realty.convenience">
+                    <option>не вказано</option>
+                    <option>всі</option>
+                    <option>туалет</option>
+                    <option>ванна</option>
+                    <option>газ</option>
+                    <option>світло</option>
+                    <option>вода</option>
+                    <option>каналізація</option>
+                    <option>душ</option>
+                    <option>джакузі</option>
+                    <option>душова кабіна</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="heating">Опалення</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="heating" [(ngModel)]="realty.heating">
+                    <option>не вказано</option>
+                    <option>без опалення</option>
+                    <option>пічне (наз/дрова)</option>
+                    <option>централізоване</option>
+                    <option>котел</option>
+                    <option>конвектор</option>
+                    <option>АГВ</option>
+                    <option>котельня на будинок</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="flooring">Підлога</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="flooring" [(ngModel)]="realty.flooring">
+                    <option>не вказано</option>
+                    <option>ломінат</option>
+                    <option>дерево</option>
+                    <option>стяжка</option>
+                    <option>паркет</option>
+                    <option>плитка</option>
+                    <option>лінолеум</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="walls">Стіни</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="walls" [(ngModel)]="realty.walls">
+                    <option>не вказано</option>
+                    <option>обої</option>
+                    <option>штукатурка</option>
+                    <option>не штукатурено</option>
+                    <option>побілка</option>
+                    <option>вагонка</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="ceiling">Стеля</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="ceiling" [(ngModel)]="realty.ceiling">
+                    <option>не вказано</option>
+                    <option>побілка</option>
+                    <option>не штукатурено</option>
+                    <option>гіпсокартон</option>
+                    <option>натяжні стелі</option>
+                    <option>вагонка</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="windows">Вікна</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="windows" [(ngModel)]="realty.windows">
+                    <option>не вказано</option>
+                    <option>металопластикові</option>
+                    <option>дерев`янні</option>
+                    <option>без вікон</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="plumbing">Сантехніка</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="plumbing" [(ngModel)]="realty.plumbing">
+                    <option>не вказано</option>
+                    <option>нова</option>
+                    <option>стара</option>
+                    <option>без сантехніки</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="bathroom">Санвузол</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="bathroom" [(ngModel)]="realty.bathroom">
+                    <option>не вказано</option>
+                    <option>роздільний</option>
+                    <option>окремий</option>
+                    <option>суміщений</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="hot_water">Гаряча вода</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="hot_water" [(ngModel)]="realty.hot_water">
+                    <option>не вказано</option>
+                    <option>бойлер</option>
+                    <option>котел</option>
+                    <option>газова колонка</option>
+                    <option>без гарячої води</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-5 col-sm-3" for="furniture">Меблі</label>
+                <div class="col-md-7 col-sm-9">
+                  <select class="form-control" id="furniture" [(ngModel)]="realty.furniture">
+                    <option>без меблів</option>
+                    <option>старі меблі</option>
+                    <option>нові меблі</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-4 col-sm-2" for="address_flat">Квартира</label>
-            <div class="col-md-8 col-sm-10">
-              <input type="text" class="form-control" id="address_flat" oninput="checkAddressFlat(false)" [(ngModel)]="realty.address_flat">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-1 col-sm-2" for="address_guide">Орієнтир</label>
-            <div class="col-md-11 col-sm-10">
-              <input type="text" class="form-control" id="address_guide" [(ngModel)]="realty.address_guide">
-            </div>
-          </div>
-        </div>
+      </form>
+      <div class="col-sm-6 segment">
+        <button type="submit" class="btn btn-default" id="submit-btn" (click)="action($event)">{{ actionText }}</button>
       </div>
-      <div class="col-sm-12 segment">
-        <hr>
-        <h4>Основна інформація</h4>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="area_all">Площа</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="area_all" placeholder="кв.м" oninput="checkAreaAll(false)" [(ngModel)]="realty.area_all">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="area_rooms">Площа кімнат</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="area_rooms" placeholder="кв.м" oninput="checkAreaRooms(false)" [(ngModel)]="realty.area_rooms">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="area_kitchen">Площа кухні</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="area_kitchen" placeholder="кв.м" oninput="checkAreaKitchen(false)" [(ngModel)]="realty.area_kitchen">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="ceiling_height">Висота</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="ceiling_height" placeholder="м" oninput="checkCeilingHeight(false)" [(ngModel)]="realty.ceiling_height">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="rooms_quantity">Кількість кімнат</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="rooms_quantity" placeholder="> 0" oninput="checkRoomsQuantity(false)" [(ngModel)]="realty.rooms_quantity">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-5 col-sm-3" for="floor_current">Поверх</label>
-            <div class="col-md-7 col-sm-9">
-              <input type="text" class="form-control" id="floor_current" oninput="checkFloorCurrent(false)" [(ngModel)]="realty.floor_current">
-            </div>
-          </div>
-        </div>
+      <div class="col-sm-6 segment">
+        <!--<button type="button" class="btn btn-warning" (click)="deleteRealty($event)">Видалити квартиру</button>-->
       </div>
-      <div class="col-sm-12 segment">
-        <hr>
-        <h4>Вартість</h4>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-6 col-sm-4" for="price">Вартість</label>
-            <div class="col-md-6 col-sm-8">
-              <input type="text" class="form-control" id="price" placeholder="UAH" oninput="checkPrice(false)" [(ngModel)]="realty.price">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-6 col-sm-4" for="min_price">Мінімальна вартість</label>
-            <div class="col-md-6 col-sm-8">
-              <input type="text" class="form-control" id="min_price" placeholder="UAH" oninput="checkMinPrice(false)" [(ngModel)]="realty.min_price">
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 form-horizontal">
-          <div class="form-group">
-            <label class="control-label col-md-6 col-sm-4" for="sale">Тип продажу</label>
-            <div class="col-md-6 col-sm-8">
-              <select class="form-control" id="sale" [(ngModel)]="realty.sale">
-                <option>не вказано</option>
-                <option>прямий</option>
-                <option>не прямий</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 segment">
-        <hr>
-        <h4>Додаткова інформація<span class="glyphicon glyphicon-menu-down" aria-hidden="true" id="menu-btn" ng-click="additionalToggle()"></span></h4>
-        <div id="additional">
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="house_type">Тип будинку</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="house_type" [(ngModel)]="realty.house_type">
-                  <option>не вказано</option>
-                  <option>цегляний</option>
-                  <option>дерев`янний</option>
-                  <option>панельний</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="rooms_type">Тип кімнат</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="rooms_type" [(ngModel)]="realty.rooms_type">
-                  <option>не вказано</option>
-                  <option>суміжні</option>
-                  <option>роздільні</option>
-                  <option>суміжно-роздільні</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="layout">Тип будови</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="layout" [(ngModel)]="realty.layout">
-                  <option>не вказано</option>
-                  <option>чешка</option>
-                  <option>київка</option>
-                  <option>старий фонд</option>
-                  <option>хрущовка</option>
-                  <option>сталінка</option>
-                  <option>новобудова</option>
-                  <option>в особняку</option>
-                  <option>спецпроект</option>
-                  <option>м/с</option>
-                  <option>гуртожиток</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="repair">Ремонт</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="repair" [(ngModel)]="realty.repair">
-                  <option>не вказано</option>
-                  <option>не штукатурено</option>
-                  <option>від забудовника</option>
-                  <option>б/р не жилий стан</option>
-                  <option>хороший стан</option>
-                  <option>косметичний ремонт</option>
-                  <option>ремонт</option>
-                  <option>євроремонт</option>
-                  <option>дизайнерсткий ремонт</option>
-                  <option>частковий</option>
-                  <option>савдеп</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="convenience">Зручності</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="convenience" [(ngModel)]="realty.convenience">
-                  <option>не вказано</option>
-                  <option>всі</option>
-                  <option>туалет</option>
-                  <option>ванна</option>
-                  <option>газ</option>
-                  <option>світло</option>
-                  <option>вода</option>
-                  <option>каналізація</option>
-                  <option>душ</option>
-                  <option>джакузі</option>
-                  <option>душова кабіна</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="heating">Опалення</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="heating" [(ngModel)]="realty.heating">
-                  <option>не вказано</option>
-                  <option>без опалення</option>
-                  <option>пічне (наз/дрова)</option>
-                  <option>централізоване</option>
-                  <option>котел</option>
-                  <option>конвектор</option>
-                  <option>АГВ</option>
-                  <option>котельня на будинок</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="flooring">Підлога</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="flooring" [(ngModel)]="realty.flooring">
-                  <option>не вказано</option>
-                  <option>ломінат</option>
-                  <option>дерево</option>
-                  <option>стяжка</option>
-                  <option>паркет</option>
-                  <option>плитка</option>
-                  <option>лінолеум</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="walls">Стіни</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="walls" [(ngModel)]="realty.walls">
-                  <option>не вказано</option>
-                  <option>обої</option>
-                  <option>штукатурка</option>
-                  <option>не штукатурено</option>
-                  <option>побілка</option>
-                  <option>вагонка</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="ceiling">Стеля</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="ceiling" [(ngModel)]="realty.ceiling">
-                  <option>не вказано</option>
-                  <option>побілка</option>
-                  <option>не штукатурено</option>
-                  <option>гіпсокартон</option>
-                  <option>натяжні стелі</option>
-                  <option>вагонка</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="windows">Вікна</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="windows" [(ngModel)]="realty.windows">
-                  <option>не вказано</option>
-                  <option>металопластикові</option>
-                  <option>дерев`янні</option>
-                  <option>без вікон</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="plumbing">Сантехніка</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="plumbing" [(ngModel)]="realty.plumbing">
-                  <option>не вказано</option>
-                  <option>нова</option>
-                  <option>стара</option>
-                  <option>без сантехніки</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="bathroom">Санвузол</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="bathroom" [(ngModel)]="realty.bathroom">
-                  <option>не вказано</option>
-                  <option>роздільний</option>
-                  <option>окремий</option>
-                  <option>суміщений</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="hot_water">Гаряча вода</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="hot_water" [(ngModel)]="realty.hot_water">
-                  <option>не вказано</option>
-                  <option>бойлер</option>
-                  <option>котел</option>
-                  <option>газова колонка</option>
-                  <option>без гарячої води</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 form-horizontal">
-            <div class="form-group">
-              <label class="control-label col-md-5 col-sm-3" for="furniture">Меблі</label>
-              <div class="col-md-7 col-sm-9">
-                <select class="form-control" id="furniture" [(ngModel)]="realty.furniture">
-                  <option>без меблів</option>
-                  <option>старі меблі</option>
-                  <option>нові меблі</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 segment submit">
-        <hr>
-        <button type="button" class="btn btn-default" id="submit-btn" (click)="saveRealty($event)">Додати</button>
-        <hr>
-      </div>
+      <!--<button type="button" (click)="change($event)">change</button>-->
     </div>
+  <!--</div>-->
   </div>
 </div>

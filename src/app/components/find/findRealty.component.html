@@ -1,42 +1,43 @@
+<script src="../../../../../../../temp/www/scripts/main.js"></script>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
       <div style="">
         <div class="col-sm-12 col-xs-12 filter-pnl">
-          <button type="button" class="btn btn-warning" id="filters-reset-btn" ng-click="filtersReset()">Скинути фільтри</button>
+          <button type="button" class="btn btn-warning" id="filters-reset-btn" (click)="filtersReset()">Скинути фільтри</button>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.city" ng-change="filtering()" placeholder="Місто">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.city" placeholder="Місто">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.street" ng-change="filtering()" placeholder="Вулиця">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.street" placeholder="Вулиця">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.address_house" ng-change="filtering()" placeholder="Будинок">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.address_house" placeholder="Будинок">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.address_flat" ng-change="filtering()" placeholder="Квартира">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.address_flat" placeholder="Квартира">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.address_district" ng-change="filtering()" placeholder="Район">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.address_district" placeholder="Район">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.price" ng-change="filtering()" placeholder="Вартість">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.price" placeholder="Вартість">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.min_price" ng-change="filtering()" placeholder="Мін. вартість">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.min_price" placeholder="Мін. вартість">
             </div>
           </div>
           <div class="filter">
@@ -44,7 +45,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Тип продажу
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.sale" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.sale">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>прямий</option>
@@ -54,27 +55,27 @@
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.area_all" ng-change="filtering()" placeholder="Площа">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.area_all" placeholder="Площа">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.area_rooms" ng-change="filtering()" placeholder="Площа кімнат">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.area_rooms" placeholder="Площа кімнат">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.area_kitchen" ng-change="filtering()" placeholder="Площа кухні">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.area_kitchen" placeholder="Площа кухні">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.rooms_quantity" ng-change="filtering()" placeholder="К-ть кімнат">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.rooms_quantity" placeholder="К-ть кімнат">
             </div>
           </div>
           <div class="filter">
             <div class="filter-body">
-              <input type="text" class="form-control" ng-model="filter.floor_current" ng-change="filtering()" placeholder="Поверх">
+              <input type="text" class="form-control" [(ngModel)]="filterModel.floor_current" placeholder="Поверх">
             </div>
           </div>
           <div class="filter">
@@ -82,7 +83,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Тип будинку
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.house_type" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.house_type">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>цегляний</option>
@@ -96,7 +97,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Тип кімнат
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.rooms_type" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.rooms_type">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>суміжні</option>
@@ -110,7 +111,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Тип будови
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.layout" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.layout">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>чешка</option>
@@ -131,7 +132,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Ремонт
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.repair" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.repair">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>не штукатурено</option>
@@ -152,7 +153,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Зручності
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.convenience" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.convenience">
                 <option value="">будь-які</option>
                 <option>не вказано</option>
                 <option>всі</option>
@@ -173,7 +174,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Опалення
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.heating" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.heating">
                 <option value="">будь-яке</option>
                 <option>не вказано</option>
                 <option>без опалення</option>
@@ -191,7 +192,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Підлога
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.flooring" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.flooring">
                 <option value="">будь-яка</option>
                 <option>не вказано</option>
                 <option>ломінат</option>
@@ -208,7 +209,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Стіни
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.walls" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.walls">
                 <option value="">будь-які</option>
                 <option>не вказано</option>
                 <option>обої</option>
@@ -224,7 +225,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Стеля
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.ceiling" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.ceiling">
                 <option value="">будь-яка</option>
                 <option>не вказано</option>
                 <option>побілка</option>
@@ -240,7 +241,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Вікна
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.windows" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.windows">
                 <option value="">будь-які</option>
                 <option>не вказано</option>
                 <option>металопластикові</option>
@@ -254,7 +255,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Сантехніка
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.plumbing" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.plumbing">
                 <option value="">будь-яка</option>
                 <option>не вказано</option>
                 <option>нова</option>
@@ -268,7 +269,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Санвузол
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.bathroom" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.bathroom">
                 <option value="">будь-який</option>
                 <option>не вказано</option>
                 <option>роздільний</option>
@@ -282,7 +283,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Гаряча вода
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.hot_water" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.hot_water">
                 <option value="">будь-яка</option>
                 <option>не вказано</option>
                 <option>бойлер</option>
@@ -297,7 +298,7 @@
               <span class="glyphicon glyphicon-triangle-right"></span>Меблі
             </div>
             <div class="filter-body">
-              <select class="form-control" ng-model="filter.furniture" ng-change="filtering()">
+              <select class="form-control" [(ngModel)]="filterModel.furniture">
                 <option value="">будь-які</option>
                 <option>без меблів</option>
                 <option>старі меблі</option>
@@ -309,7 +310,7 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="col-md-12" *ngFor="let realty of realties | paginate: { itemsPerPage: pageSize , currentPage: p }">
+      <div class="col-md-12" *ngFor="let realty of realties | searchPipe: filterModel | paginate: { itemsPerPage: pageSize, currentPage: p }">
         <realty-item [realty]="realty"></realty-item>
       </div>
     </div>
@@ -317,5 +318,6 @@
 
 </div>
 <div class="text-center" style="height: 30px;">
+  <h2>{{ realties.length }}</h2>
     <pagination-controls (pageChange)="p = $event" (pageChange)="pageChanged($event)" directionLinks="true"></pagination-controls>
 </div>
