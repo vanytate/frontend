@@ -37,8 +37,7 @@ export class RealtyService {
     }
 
     deleteRealty(realty): Observable<any> {
-        console.log(realty.id);
-        return this.http.post(this.deleteRealtyByIdUrl + realty.id, {id: realty.id})
+        return this.http.post(this.deleteRealtyByIdUrl + realty.id, null)
           .map(res => res)
           .catch(this.handleError);
     }
