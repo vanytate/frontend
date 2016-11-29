@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, FormBuilder } from '@angular/forms';
+import {FormsModule, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { RouterModule, Routes } from '@angular/router';
 
 import {Ng2PaginationModule} from 'ng2-pagination';
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AppComponent } from './app.component';
 
@@ -37,6 +39,10 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     Ng2PaginationModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCaQVRMQWK77TWdzl320yL4r8nS9ND4lJg'
+    }),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RealtyService, FormBuilder],

@@ -1,1 +1,30 @@
-this is contacts
+
+
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12">
+            <hr>
+            <h2 class="intro-text text-center">Контакти
+                <strong>Нерухомість Чернівці</strong>
+            </h2>
+            <hr>
+        </div>
+        <div class="col-md-8">
+        <sebm-google-map [latitude]="lat" [longitude]="lng">
+          <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+        </sebm-google-map>
+        </div>
+        <div class="col-md-4">
+            <p>Телефон:
+                <strong>+38 (012) 34-56-789</strong>
+            </p>
+            <p>Ел.пошта:
+                <strong><a href="mailto:chernivtsirealty@gmail.com">chernivtsirealty@gmail.com</a></strong>
+            </p>
+            <p>Адреса:
+                <strong>вул. Університетська
+                    <br>м.Чернівці, Україна</strong>
+            </p>
+        </div>
+    </div>
+</div>

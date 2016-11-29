@@ -1,3 +1,13 @@
-ng2-pagination {
-  height: 34px;
+input[type="text"], select, filters-reset-btn {
+  margin-bottom: 10px;
+}
+
+.filter-title {
+  text-align: left;
+  margin-left: 10px;
+}
+
+#rangeForPagination {
+  text-align: center;
+  width: 100px;
 }

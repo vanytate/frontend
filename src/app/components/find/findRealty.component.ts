@@ -13,19 +13,16 @@ export class FindRealtyComponent implements OnInit {
 
     filterModel;
 
-    pageSize: number;
+    sliderValue: number;
 
     constructor(private realtyService: RealtyService) {
+        this.sliderValue = 5;
         this.filterModel = {};
         this.realties = [];
-        this.pageSize = 10;
     }
 
     ngOnInit() {
       this.realtyService.getRealties().subscribe(r => this.realties = r);
-    }
-
-    public showData(event) {
     }
 
     pageChanged(event) {
@@ -35,6 +32,15 @@ export class FindRealtyComponent implements OnInit {
     filtersReset() {
       this.realties.filter(e => e);
       this.filterModel = {};
+    }
+
+    onRealtyDelete(realtyForDelete: IRealty) {
+      this.realtyService.deleteRealty(realtyForDelete).subscribe(res => {
+        let index = this.realties.indexOf(realtyForDelete);
+        if (index > -1) {
+          this.realties.splice(index, 1);
+        }
+      });
     }
 
 }

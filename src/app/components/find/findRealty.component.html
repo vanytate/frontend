@@ -1,10 +1,13 @@
-<script src="../../../../../../../temp/www/scripts/main.js"></script>
 <div class="container">
   <div class="row">
+    <div class="pull-right" id="rangeForPagination">
+      <input type="range" min="1" max="10" step="1" value="{{ sliderValue }}" [(ngModel)]="sliderValue">
+    </div>
+    <div class="pull-right">
+      {{ sliderValue }}
+    </div>
     <div class="col-md-4">
-      <div style="">
-        <div class="col-sm-12 col-xs-12 filter-pnl">
-          <button type="button" class="btn btn-warning" id="filters-reset-btn" (click)="filtersReset()">Скинути фільтри</button>
+          <button type="button" class="btn btn-default pull-right" id="filters-reset-btn" (click)="filtersReset()">Скинути фільтри</button>
           <div class="filter">
             <div class="filter-body">
               <input type="text" class="form-control" [(ngModel)]="filterModel.city" placeholder="Місто">
@@ -42,7 +45,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Тип продажу
+              Тип продажу
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.sale">
@@ -80,21 +83,21 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Тип будинку
+              Тип будинку
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.house_type">
                 <option value="">будь-який</option>
-                <option>не вказано</option>
-                <option>цегляний</option>
-                <option>дерев`янний</option>
-                <option>панельний</option>
+                <option value="не вказано">не вказано</option>
+                <option value="цегляний">цегляний</option>
+                <option value="дерев`янний">дерев`янний</option>
+                <option value="панельний">панельний</option>
               </select>
             </div>
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Тип кімнат
+              Тип кімнат
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.rooms_type">
@@ -108,7 +111,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Тип будови
+              Тип будови
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.layout">
@@ -129,7 +132,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Ремонт
+              Ремонт
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.repair">
@@ -150,7 +153,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Зручності
+              Зручності
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.convenience">
@@ -171,7 +174,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Опалення
+              Опалення
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.heating">
@@ -189,7 +192,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Підлога
+              Підлога
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.flooring">
@@ -206,7 +209,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Стіни
+              Стіни
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.walls">
@@ -222,7 +225,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Стеля
+              Стеля
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.ceiling">
@@ -238,7 +241,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Вікна
+              Вікна
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.windows">
@@ -252,7 +255,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Сантехніка
+              Сантехніка
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.plumbing">
@@ -266,7 +269,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Санвузол
+              Санвузол
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.bathroom">
@@ -280,7 +283,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Гаряча вода
+              Гаряча вода
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.hot_water">
@@ -295,7 +298,7 @@
           </div>
           <div class="filter">
             <div class="filter-title">
-              <span class="glyphicon glyphicon-triangle-right"></span>Меблі
+              Меблі
             </div>
             <div class="filter-body">
               <select class="form-control" [(ngModel)]="filterModel.furniture">
@@ -306,18 +309,16 @@
               </select>
             </div>
           </div>
-        </div>
-      </div>
     </div>
     <div class="col-md-8">
-      <div class="col-md-12" *ngFor="let realty of realties | searchPipe: filterModel | paginate: { itemsPerPage: pageSize, currentPage: p }">
-        <realty-item [realty]="realty"></realty-item>
+      <div *ngFor="let realty of realties | searchPipe: filterModel | paginate: { itemsPerPage: sliderValue, currentPage: p }">
+        <realty-item [realty]="realty" (deleted)="onRealtyDelete($event)"></realty-item>
+      </div>
+      <div class="text-center">
+          <pagination-controls (pageChange)="p = $event" (pageChange)="pageChanged($event)" directionLinks="true"></pagination-controls>
       </div>
     </div>
   </div>
 
 </div>
-<div class="text-center" style="height: 30px;">
-  <h2>{{ realties.length }}</h2>
-    <pagination-controls (pageChange)="p = $event" (pageChange)="pageChanged($event)" directionLinks="true"></pagination-controls>
-</div>
+

@@ -1,19 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import {IRealty} from '../../shared/realty.model';
-import {Realty} from '../../shared/realty.modelImpl';
-import {RealtyService} from '../../shared/realty.service';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import { IRealty } from '../../shared/realty.model';
+import { Realty } from '../../shared/realty.modelImpl';
+import { RealtyService } from '../../shared/realty.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 
 @Component({
+  selector: 'add-form',
   templateUrl: './addRealty.component.html',
   styleUrls: ['./showEditAdd.component.css']
 })
 export class AddRealtyComponent implements OnInit {
 
-  complexForm : FormGroup;
+    complexForm: FormGroup;
 
     realty: IRealty;
 
@@ -24,38 +25,40 @@ export class AddRealtyComponent implements OnInit {
 
     constructor(private realtyService: RealtyService, private route: ActivatedRoute, fb: FormBuilder) {
       this.realty = new Realty();
-      console.log('this is constructor', this.realty);
-      this.complexForm = fb.group({
-          'city': [Validators.required],
-          'street': '',
-          'address_district': '',
-          'address_house': '',
-          'address_flat': '',
-          'address_guide': '',
-          'floor_current': '',
-          'house_type': '',
-          'rooms_quantity': '',
-          'rooms_type': '',
-          'area_all': '',
-          'area_rooms': '',
-          'area_kitchen': '',
-          'ceiling_height': '',
-          'layout': '',
-          'repair': '',
-          'convenience': '',
-          'heating': '',
-          'flooring': '',
-          'walls': '',
-          'ceiling': '',
-          'windows': '',
-          'plumbing': '',
-          'bathroom': '',
-          'hot_water': '',
-          'price': '',
-          'min_price': '',
-          'sale': '',
-          'furniture': ''
-        });
+      this.complexForm = new FormGroup({
+        city: new FormControl()
+      });
+      // this.complexForm = fb.group({
+      //     city: [Validators.required],
+      //     'street': '',
+      //     'address_district': '',
+      //     'address_house': '',
+      //     'address_flat': '',
+      //     'address_guide': '',
+      //     'floor_current': '',
+      //     'house_type': '',
+      //     'rooms_quantity': '',
+      //     'rooms_type': '',
+      //     'area_all': '',
+      //     'area_rooms': '',
+      //     'area_kitchen': '',
+      //     'ceiling_height': '',
+      //     'layout': '',
+      //     'repair': '',
+      //     'convenience': '',
+      //     'heating': '',
+      //     'flooring': '',
+      //     'walls': '',
+      //     'ceiling': '',
+      //     'windows': '',
+      //     'plumbing': '',
+      //     'bathroom': '',
+      //     'hot_water': '',
+      //     'price': '',
+      //     'min_price': '',
+      //     'sale': '',
+      //     'furniture': ''
+      //   });
     }
 
     ngOnInit(): void {
@@ -78,16 +81,15 @@ export class AddRealtyComponent implements OnInit {
     }
 
     saveRealty(event) {
-      this.realtyService.saveRealty(this.realty).subscribe(res => console.log(res));
+      this.realtyService.saveRealty(this.realty).subscribe(res => this.realty = new Realty());
     }
 
     updateRealty(event) {
-      console.log('update realty');
-      console.log(this.realty);
+      this.realtyService.updateRealty(this.realty).subscribe(res => console.log(res));
     }
 
     deleteRealty(event) {
-      this.realtyService.deleteRealty(this.realty.id).subscribe(res => console.log(res));
+      this.realtyService.deleteRealty(this.realty).subscribe(res => console.log(res));
     }
 
     change() {

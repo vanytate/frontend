@@ -8,10 +8,12 @@
         <div>р-н. {{ realty.address_district }} м. {{ realty.city }}</div>
         <hr>
         <div>Кімнат <b>{{ realty.rooms_quantity }}</b> &nbsp; &nbsp; Площа <b>{{ realty.area_all }}</b> &nbsp; &nbsp; Поверх <b>{{ realty.floor_current }}</b></div>
+        <hr>
+        <div>Ціна <b>{{ realty.price }}</b> $</div>
       </div>
     </div>
     <div class="panel-footer clearfix">
-      <span class="pull-left">Ціна <b>{{ realty.price }}</b> $</span>
+      <span class="pull-left"><button type="button" class="btn btn-primary" (click)="deleteRealty(realty)">Видалиит квартиру</button></span>
       <span class="pull-right">
         <a [routerLink]="['/edit', realty.id]">детальніше...</a>
     </span>

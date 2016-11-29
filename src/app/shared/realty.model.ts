@@ -25,8 +25,8 @@ export interface IRealty {
   plumbing: string;
   bathroom: string;
   hot_water: string;
-  price: any;
-  min_price: any;
+  price: number;
+  min_price: number;
   sale: string;
   furniture: string;
 }
